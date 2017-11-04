@@ -7,10 +7,13 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<form action="/" method="post">
+	<form action="/todo" method="post">
 		Title: <input type="text" name="title">
 		Body: <input type="text" name="body">
 		<input type="submit" value="Add">
 	</form>
+	<% for (var i = 0 ; i < todo.length ; i++){ %>
+	<p><%= todo[i].title %></p>
+	<% } %>
 </body>
 </html>

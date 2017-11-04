@@ -21,12 +21,31 @@ var todoSchema = mongoose.Schema({
 
 var Todo = mongoose.model("Todo", todoSchema);
 
-app.get('/', function(req, res){
-	res.render("index");
+app.get('/todo', function(req, res){
+	Todo.find({}, function(err, data){
+		if(err) throw err;
+		res.render("index", {todo: data});
+	});
 });
 
-app.post('/', function(req, res){
-	res.send(JSON.stringify(req.body.name));
+app.post('/todo', function(req, res){
+	var todoItem = req.body;
+	if (!todoItem.title || !todoItem.body) {
+		res.render('show_message', {
+			message: "Sorry you provided wrong info"});
+	}else{
+		var item = Todo({
+			title : todoItem.title,
+			body : todoItem.body 
+		});	
+		item.save(function(err){
+			if (err) throw err;
+		});
+		Todo.find({}, function(err, data){
+			if(err) throw err;
+			res.render("index", {todo: data});
+		});
+	}
 });
 
 app.listen(8080);
