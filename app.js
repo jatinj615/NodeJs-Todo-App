@@ -41,11 +41,15 @@ app.post('/todo', function(req, res){
 		item.save(function(err){
 			if (err) throw err;
 		});
-		Todo.find({}, function(err, data){
-			if(err) throw err;
-			res.render("index", {todo: data});
-		});
+		res.redirect('/todo');
 	}
+});
+
+app.get('/todo/:id', function(req, res){
+	Todo.findByIdAndRemove(req.params.id, function(err, response){
+		res.redirect('/todo');
+	});
+	
 });
 
 app.listen(8080);

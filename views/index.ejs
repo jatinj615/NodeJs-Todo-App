@@ -4,16 +4,22 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>nodejs</title>
-	<link rel="stylesheet" href="">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	<form action="/todo" method="post">
-		Title: <input type="text" name="title">
-		Body: <input type="text" name="body">
-		<input type="submit" value="Add">
-	</form>
-	<% for (var i = 0 ; i < todo.length ; i++){ %>
-	<p><%= todo[i].title %></p>
-	<% } %>
+	<div class="container">
+		<div class="row">
+			<form action="/todo" method="post">
+				Title: <input type="text" name="title">
+				Body: <input type="text" name="body">
+				<input type="submit" value="Add">
+			</form>
+			<% for (var i = 0 ; i < todo.length ; i++){ %>
+			<p><%= todo[i].title %></p><p><%= todo[i].body %></p><a href="/todo/<%= todo[i]._id %>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			<% } %>
+		</div>
+	</div>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
