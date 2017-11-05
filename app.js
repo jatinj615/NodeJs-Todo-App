@@ -46,10 +46,25 @@ app.post('/todo', function(req, res){
 });
 
 app.get('/todo/:id', function(req, res){
-	Todo.findByIdAndRemove(req.params.id, function(err, response){
+	Todo.findByIdAndRemove(req.params.id, function(err){
+		if(err) throw err;
 		res.redirect('/todo');
 	});
 	
+});
+
+app.get('/todo/:id/edit', function(req, res){
+	Todo.find({_id: req.params.id}, function(err, data){
+		if(err) throw err;
+		res.render('edit', {todo: data});
+	});
+});
+
+app.post('/todo/:id/edit', function(req, res){
+	Todo.findByIdAndUpdate({_id: req.params.id}, {title: req.body.title, body: req.body.body}, function(err, data){
+		if(err) throw err;
+		res.redirect('/todo');
+	});
 });
 
 app.get('/detail/:id', function(req, res){

@@ -17,6 +17,7 @@
 			</form>
 			<% for (var i = 0 ; i < todo.length ; i++){ %>
 			<a href="/detail/<%= todo[i]._id %>"><p><%= todo[i].title %></p></a>
+			<a href="/todo/<%= todo[i]._id %>/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 			<a href="/todo/<%= todo[i]._id %>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 			<% } %>
 		</div>
