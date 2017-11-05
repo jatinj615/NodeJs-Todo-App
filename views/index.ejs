@@ -16,7 +16,8 @@
 				<input type="submit" value="Add">
 			</form>
 			<% for (var i = 0 ; i < todo.length ; i++){ %>
-			<p><%= todo[i].title %></p><p><%= todo[i].body %></p><a href="/todo/<%= todo[i]._id %>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			<a href="/detail/<%= todo[i]._id %>"><p><%= todo[i].title %></p></a>
+			<a href="/todo/<%= todo[i]._id %>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 			<% } %>
 		</div>
 	</div>

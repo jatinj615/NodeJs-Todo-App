@@ -52,4 +52,11 @@ app.get('/todo/:id', function(req, res){
 	
 });
 
+app.get('/detail/:id', function(req, res){
+	Todo.find({_id: req.params.id}, function(err, data){
+		if(err) throw err;
+		res.render('detail', {todo: data});
+	});
+});
+
 app.listen(8080);
