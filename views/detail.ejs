@@ -10,8 +10,11 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h1><%= todo[0].title %></h1><br>
-			<p><%= todo[0].body %></p>
+			<div class="text-center">
+				<h1><%= todo[0].title %></h1><br>
+				<p><%= todo[0].body %></p>
+				<a href="/todo" class="btn btn-info">Back</a>
+			</div>
 		</div>
 	</div>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
